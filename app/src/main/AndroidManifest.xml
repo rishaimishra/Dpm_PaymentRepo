@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.payment">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name="com.dpm.payment.DPMPaymentApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="m">
+        <activity
+            android:name="com.dpm.payment.activities.businessProperty.BusinessPaymentFormActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
+        <activity
+            android:name="com.dpm.payment.activities.WebViewActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.dpm.payment.activities.user.MobileWalletActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreenApplication"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.dpm.payment.activities.cashier.WebViewPaymentRecipt"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreenApplication"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.dpm.payment.activities.user.ActivityUserLogin"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreenApplication"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.dpm.payment.activities.ActivitySplash"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreenApplication"
+            android:windowSoftInputMode="stateAlwaysHidden">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name="com.dpm.payment.activities.user.BankListActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreenApplication"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.dpm.payment.activities.user.PaymentOptionUserActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreenApplication"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.dpm.payment.activities.user.WebViewPaymentActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreenApplication"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.dpm.payment.activities.user.ActivityUserMainDetails"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreenApplication"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.dpm.payment.activities.PickUpLocationActivity"
+            android:excludeFromRecents="true"
+            android:label=""
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreenApplication"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.dpm.payment.activities.cashier.ActivityMainCashierProperty"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreenApplication"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.dpm.payment.activities.user.ActivityMainUserProperty"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreenApplication"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.dpm.payment.activities.cashier.ActivityCashierLogin"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreenApplication"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.dpm.payment.activities.ActivityHelp"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreenApplication"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.dpm.payment.activities.ActivityMyProfile"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreenApplication"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.dpm.payment.activities.cashier.ActivityMainDetails"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreenApplication"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.dpm.payment.activities.user.ActivityMainUser"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreenApplication"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.dpm.payment.activities.user.ActivityUserOTP"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreenApplication"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.dpm.payment.activities.user.ListPropertyUserActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreenApplication"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+    </application>
+
+</manifest>

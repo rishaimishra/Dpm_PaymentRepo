@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:padding="@dimen/layout_border_margin_16dp">
+
+<!--
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/activityOrderCancel_tv_choose_reason"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/button_height40dp"
+            android:background="@color/lightGreen"
+            android:padding="@dimen/dimen10dp"
+            android:text="@string/choose_reason"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/textMedium14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/activityOrderCancel_rg_reasons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activityOrderCancel_tv_choose_reason">
+
+            <RadioButton
+                android:id="@+id/activityOrderCancel_rb_missing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangular_corner_green"
+                android:padding="@dimen/margin_between_text5dp"
+                android:text="@string/missing_order_items" />
+
+            <RadioButton
+                android:id="@+id/activityOrderCancel_rb_not_present"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangular_corner_green"
+                android:padding="@dimen/margin_between_text5dp"
+                android:text="@string/not_present_home" />
+
+            <RadioButton
+                android:id="@+id/activityOrderCancel_rb_seal_broken"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangular_corner_green"
+                android:padding="@dimen/margin_between_text5dp"
+                android:text="@string/seal_broken" />
+
+            <RadioButton
+                android:id="@+id/activityOrderCancel_rb_others"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangular_corner_green"
+                android:padding="@dimen/margin_between_text5dp"
+                android:text="@string/others" />
+        </RadioGroup>
+
+
+        <TextView
+            android:id="@+id/activityOrderCancel_tv_describe_reason"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/button_height40dp"
+            android:background="@color/lightGreen"
+            android:padding="@dimen/dimen10dp"
+            android:text="@string/describe_your_reason"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/textMedium14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activityOrderCancel_rg_reasons" />
+
+
+        <EditText
+            android:id="@+id/activityOrderCancel_et_reason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangular_corner_green"
+            android:gravity="top"
+            android:hint="@string/write_to_us"
+            android:minLines="4"
+            android:padding="@dimen/margin_between_text5dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textMedium14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activityOrderCancel_tv_describe_reason" />
+
+
+        <Button
+            android:id="@+id/activityLogin_bt_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height40dp"
+            android:layout_marginTop="@dimen/button_height40dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/submit"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/textMedium14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activityOrderCancel_et_reason" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+-->
+</ScrollView>

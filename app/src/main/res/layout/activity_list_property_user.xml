@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+  <!--  <include
+        android:id="@+id/topHeader"
+        layout="@layout/header_top"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />-->
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:id="@+id/topHeader"
+        >
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_back_foreground"
+            android:visibility="gone"
+            />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/property"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/getProperty"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_btn_login"
+        android:text="@string/get_property"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+
+        />
+
+    <TextView
+        android:id="@+id/tvNoResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_property_found_for_this_mobile_number"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvListOfProperty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_columnWeight="1"
+        android:layout_below="@id/topHeader"
+        android:layout_gravity="fill"
+        android:layout_marginStart="@dimen/dimen5dp"
+        android:layout_marginEnd="@dimen/dimen5dp"
+
+        />
+
+
+</RelativeLayout>

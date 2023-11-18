@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#FFF"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btUserLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Login With 919503595423"
+            android:visibility="gone"
+
+            />
+
+
+        <ImageView
+            android:layout_width="@dimen/dimen180dp"
+            android:layout_height="@dimen/dimen180dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/font_roboto_regular"
+            android:src="@drawable/ic_splash"
+            android:text="@string/app_name"
+            android:textColor="@color/blue_light"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:textAllCaps="false"
+            android:textSize="@dimen/dimen18dp"
+            android:gravity="center"
+            android:text="Municipal Rate Management System"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="@dimen/dimen5dp"
+            android:textAllCaps="false"
+            android:textSize="@dimen/dimen18dp"
+            android:gravity="center"
+            android:text="Self Service"/>
+
+        <TextView
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/hi_cashier_please_sign_in_to_start_your_session" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_select_blue_button"
+                android:fontFamily="@font/font_roboto_regular"
+                android:text="@string/cashier"
+                android:textAllCaps="false"
+                android:textColor="@color/blue_light"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/btUser"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_login"
+                android:fontFamily="@font/font_roboto_regular"
+                android:text="@string/user"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp">
+
+            <TextView
+                android:id="@+id/tvHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/font_roboto_regular"
+                android:text="@string/cashier_login"
+                android:textColor="@color/blue_light"
+                android:textSize="15sp"
+
+                />
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/tvHeader"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_square_blue_border"
+                android:fontFamily="@font/font_roboto_regular"
+                android:hint="@string/user_name2"
+                android:inputType="textEmailAddress"
+                android:paddingStart="10dp"
+                android:text="vik@gmail.com"
+                android:textSize="13sp" />
+
+            <EditText
+                android:text="123456"
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/etEmail"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_square_blue_border"
+                android:fontFamily="@font/font_roboto_regular"
+                android:hint="@string/pass"
+                android:inputType="textPassword"
+                android:paddingStart="10dp"
+                android:textSize="13sp" />
+
+
+            <Button
+                android:id="@+id/btLogin"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/etPassword"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_login"
+                android:fontFamily="@font/font_roboto_regular"
+                android:text="@string/sign_in"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/tvCashier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen50dp"
+            android:padding="@dimen/dimen10dp"
+            android:text="@string/not_cashier_please_click_here_to_sign_in" />
+
+
+    </LinearLayout>
+</ScrollView>

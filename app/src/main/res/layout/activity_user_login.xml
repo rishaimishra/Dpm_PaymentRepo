@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+           >
+            <ImageView
+                android:layout_width="@dimen/dimen180dp"
+                android:layout_height="@dimen/dimen180dp"
+                android:text="@string/app_name"
+                android:src="@drawable/ic_splash"
+                android:textSize="22sp"
+                android:textColor="@color/blue_light"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/font_roboto_regular"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textAllCaps="false"
+                android:textSize="@dimen/dimen18dp"
+                android:gravity="center"
+                android:text="Municipal Rate Management System"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="@dimen/dimen5dp"
+                android:textAllCaps="false"
+                android:textSize="@dimen/dimen18dp"
+                android:gravity="center"
+                android:text="Self Service"/>
+
+            <TextView
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hi_user_please_enter_your_mobile_number_to_sign_in"
+                android:textSize="13sp"
+                android:layout_gravity="center_horizontal"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+
+                >
+
+                <Button
+                    android:id="@+id/btCashier"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_btn_login"
+                    android:text="@string/cashier"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+
+                    />
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="match_parent"
+                    />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_select_blue_button"
+                    android:text="@string/user"
+                    android:textAllCaps="false"
+                    android:textColor="@color/blue_light"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="30dp">
+
+                <TextView
+                    android:id="@+id/tvHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/landlord_property_owner_sign_in"
+                    android:textColor="@color/blue_light"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:id="@+id/llPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvHeader"
+                    android:orientation="horizontal"
+                    >
+
+                    <EditText
+                        android:id="@+id/etISDPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_centerHorizontal="true"
+                        android:ems="5"
+                        android:hint="@string/isd_code"
+                        android:text="@string/_232"
+                        android:inputType="phone"
+                        android:layout_marginTop="10dp"
+                        android:paddingStart="10dp"
+                        android:textSize="14sp"
+                        android:background="@drawable/bg_square_blue_border"
+                        android:maxLength="3"
+                        android:digits="0123456789"
+                        android:gravity="center"
+                        />
+
+                    <EditText
+                        android:id="@+id/etPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_centerHorizontal="true"
+                        android:hint="Mobile Number*"
+                        android:text="76100100"
+                        android:inputType="phone"
+                        android:layout_marginTop="10dp"
+                        android:paddingStart="10dp"
+                        android:textSize="14sp"
+                        android:background="@drawable/bg_square_blue_border"
+                        android:maxLength="13"
+                        />
+
+                </LinearLayout>
+
+
+
+                <TextView
+                    android:id="@+id/tvBelowText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/llPhone"
+                    android:layout_marginTop="@dimen/dimen10dp"
+                    android:layout_marginStart="@dimen/dimen10dp"
+                    android:text="@string/valid_number_associated_with_your_property_id"
+                    android:textSize="12sp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tvTimer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvBelowText"
+                    android:layout_marginTop="@dimen/dimen10dp"
+                    android:layout_marginStart="@dimen/dimen10dp"
+                    android:text="@string/_0"
+                    android:visibility="gone"
+
+
+                    />
+
+                <Button
+                    android:id="@+id/btSendOTP"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/tvBelowText"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="60dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_btn_login"
+                    android:text="@string/send_otp"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvCashier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cashier_please_click_here_to_sign_in"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="13sp"
+                android:padding="@dimen/dimen10dp"
+                />
+
+            <!--<TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/verify_otp_send_to_your_registered_number"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="12sp"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+
+                >
+                <EditText
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:maxLength="1"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/bg_square_blue_border"
+                    android:gravity="center"
+                    android:hint="0"
+
+                    />
+                <EditText
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:maxLength="1"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/bg_square_blue_border"
+                    android:gravity="center"
+                    android:hint="0"
+                    />
+                <EditText
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:maxLength="1"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/bg_square_blue_border"
+                    android:gravity="center"
+                    android:hint="0"
+                    />
+                <EditText
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:maxLength="1"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/bg_square_blue_border"
+                    android:gravity="center"
+                    android:hint="0"
+                    />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btSubmit"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/etEmail"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_btn_login"
+                android:text="@string/verify"
+                android:layout_gravity="center_horizontal"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp"
+                />-->
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
