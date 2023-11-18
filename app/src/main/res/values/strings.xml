@@ -304,10 +304,5 @@
 
     </string-array>
 
-    <string-array name="business_type">
-        <item>Registration Fees</item>
-        <item>Licence Fees</item>
-    </string-array>
-
 
 </resources>

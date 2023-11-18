@@ -16,7 +16,6 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.Spinner;
@@ -29,13 +28,11 @@ import androidx.appcompat.widget.AppCompatRadioButton;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.dpm.payment.activities.businessProperty.BusinessPaymentFormActivity;
 import com.dpm.payment.activities.user.ActivityUserLogin;
 import com.dpm.payment.models.SearchResponseModel;
 import com.dpm.payment.models.propertydetail.Assessment;
 import com.dpm.payment.retrofit.Utills.ApiRequest;
 import com.dpm.payment.retrofit.Utills.PART;
-import com.dpm.payment.retrofit.Utills.ToastUtils;
 import com.dpm.payment.retrofit.interfaces.OnCallBackListner;
 import com.dpm.payment.utils.AlertDialogUtils;
 import com.dpm.payment.utils.CommonUtils;
@@ -65,7 +62,6 @@ import static com.dpm.payment.activities.user.ActivityMainUserProperty.KEY_PROPE
 import static com.dpm.payment.utils.ConstantData.REQUEST_KEY_PROPERTY_ID;
 import static com.dpm.payment.utils.ConstantData.TAG_REQUEST_SAVE_PAYMENT;
 import static com.dpm.payment.utils.ConstantData.TAG_REQUEST_SEARCH_PROPERTY;
-import static com.dpm.payment.utils.RestApiUrl.URL_BUSINESS_SEARCH;
 import static com.dpm.payment.utils.RestApiUrl.URL_CASHIER_SAVE_PAYMENT;
 import static com.dpm.payment.utils.RestApiUrl.URL_CASHIER_SEARCH_PROPERTY;
 import static com.dpm.payment.utils.RestApiUrl.URL_LANDLORD_PROPERTY_LIST;
@@ -101,7 +97,6 @@ public class ActivityMainCashierProperty extends AppCompatActivity implements Vi
     RecyclerView activityUserSearchResult_rv_dates;
     Button activityOrderDetails_bt_save;
     Button activityMain_bt_searchClear;
-    Button activityMain_btnSearchBusiness;
     TextView tvInputAmount;
     TextView tvInputAmount2;
 
@@ -134,14 +129,9 @@ public class ActivityMainCashierProperty extends AppCompatActivity implements Vi
     List<PART> list_file;
 
     Spinner spin_payment_type, spin_payment_year;
-    RadioGroup radioGroup;
 
 
     String balanceDue;
-
-    View layoutPropertyOwner, layoutBusinessProperty;
-    EditText activityMain_et_businessId;
-    Spinner spinnerBusinessOperation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,25 +154,6 @@ public class ActivityMainCashierProperty extends AppCompatActivity implements Vi
         activityUserSearchResult_rb_one.setOnCheckedChangeListener((compoundButton, isChecked) -> setChequeVisible(false));
         activityUserSearchResult_rb_two.setOnCheckedChangeListener((compoundButton, b) -> setChequeVisible(true));
 
-        radioGroup.setOnCheckedChangeListener((compoundButton, b) -> {
-
-            // int selectedButton = compoundButton.getCheckedRadioButtonId();
-            String text = ((RadioButton) compoundButton.findViewById(b)).getText().toString();
-            switch (text) {
-                case "Property owner": {
-                    layoutPropertyOwner.setVisibility(View.VISIBLE);
-                    layoutBusinessProperty.setVisibility(View.GONE);
-                    break;
-                }
-                case "Business Property": {
-                    layoutBusinessProperty.setVisibility(View.VISIBLE);
-                    layoutPropertyOwner.setVisibility(View.GONE);
-                    break;
-                }
-            }
-
-        });
-
 
     }
 
@@ -200,11 +171,6 @@ public class ActivityMainCashierProperty extends AppCompatActivity implements Vi
         scroll_view = findViewById(R.id.scroll_view);
         checkBox_pensioners_discount = findViewById(R.id.checkBox_pensioners_discount);
         checkBox_disability_discount = findViewById(R.id.checkBox_disability_discount);
-
-
-        layoutPropertyOwner = findViewById(R.id.layoutPropertyOwner);
-        layoutBusinessProperty = findViewById(R.id.layoutBusinessProperty);
-        radioGroup = findViewById(R.id.radioGroup);
 
 
        /* edt_landlord_first_name = findViewById(R.id.edt_landlord_first_name);
@@ -244,10 +210,7 @@ public class ActivityMainCashierProperty extends AppCompatActivity implements Vi
         activityMain_et_propertyId = findViewById(R.id.activityMain_et_propertyId);
 
 
-        activityMain_et_businessId = findViewById(R.id.activityMain_et_businessId);
-        spinnerBusinessOperation = findViewById(R.id.spinnerBusinessOperation);
         activityMain_bt_search = findViewById(R.id.activityMain_bt_search);
-        activityMain_btnSearchBusiness = findViewById(R.id.activityMain_btnSearchBusiness);
 
         activityMain_bt_searchClear = findViewById(R.id.activityMain_bt_searchClear);
 
@@ -352,9 +315,9 @@ public class ActivityMainCashierProperty extends AppCompatActivity implements Vi
 
                             // FIXME: 13-05-2022
 
-                            double dueAmt = Double.parseDouble(balanceDue) - Double.parseDouble(activityUserSearchResult_et_paying_amount.getText().toString().trim());
+                            double dueAmt = Double.parseDouble(balanceDue) - Double.parseDouble(activityUserSearchResult_et_paying_amount.getText().toString().trim()) ;
 
-                            activityUserSearchResult_et_total_amount.setText(String.format("%.0f", dueAmt));
+                           activityUserSearchResult_et_total_amount.setText(String.format("%.0f", dueAmt));
                             tvInputAmount2.setText("Le " + SetCommaText(activityUserSearchResult_et_total_amount.getText().toString().trim()));
 
 
@@ -396,7 +359,6 @@ public class ActivityMainCashierProperty extends AppCompatActivity implements Vi
 
     private void initializeListeners() {
         activityMain_bt_search.setOnClickListener(this);
-        activityMain_btnSearchBusiness.setOnClickListener(this);
 
         activityMain_bt_searchClear.setOnClickListener(this);
         activityUserSearchResult_bt_view_details.setOnClickListener(this);
@@ -481,20 +443,7 @@ public class ActivityMainCashierProperty extends AppCompatActivity implements Vi
                     ex.printStackTrace();
                 }
 
-
                 break;
-
-
-            case R.id.activityMain_btnSearchBusiness:
-                if (activityMain_et_businessId.getText().toString().isEmpty()) {
-                    Toast.makeText(mContext, "please enter property Id", Toast.LENGTH_SHORT).show();
-                } else {
-                    activityMain_et_businessId.clearFocus();
-                    activityMain_btnSearchBusiness.requestFocus();
-                    reqBusinessSearch(activityMain_et_businessId.getText().toString(), spinnerBusinessOperation.getSelectedItem().toString());
-                }
-                break;
-
             case R.id.activityMain_bt_searchClear:
 
                 reset();
@@ -884,9 +833,11 @@ public class ActivityMainCashierProperty extends AppCompatActivity implements Vi
                                 Helper.RATE_PAYABLE = dataModel.getRate_payable();
 
                                 activityUserSearchResult_tv_discount_rate_payable_value.setText(StringUtils.AmountWithComma(dataModel.getDiscounted_rate_payable_2022()));
-                                // activityUserSearchResult_tv_council_adjustment_value.setText(StringUtils.AmountWithComma(StringUtils.roundStringValue("" + new BigDecimal(dataModel.getCouncil_adjustments_parameters()))));
+                               // activityUserSearchResult_tv_council_adjustment_value.setText(StringUtils.AmountWithComma(StringUtils.roundStringValue("" + new BigDecimal(dataModel.getCouncil_adjustments_parameters()))));
                                 activityUserSearchResult_tv_council_adjustment_value.setText(StringUtils.AmountWithComma(dataModel.getCouncil_adjustments_parameters()));
                                 activityUserSearchResult_tv_net_assessed_value.setText(dataModel.getProperty_net_assessed_value());
+
+
 
 
                                 if (dataModel.getPensionerDiscount().equalsIgnoreCase("0.00"))
@@ -896,8 +847,8 @@ public class ActivityMainCashierProperty extends AppCompatActivity implements Vi
                                     disabilityStatus = true;
 
 
-                                //  boolean pensionerStatus = dataModel.getPensionerDiscount().equalsIgnoreCase("0") ? true : false;
-                                //  boolean disabilityStatus = dataModel.getDisabilityDiscount().equalsIgnoreCase("0") ? true : false;
+                              //  boolean pensionerStatus = dataModel.getPensionerDiscount().equalsIgnoreCase("0") ? true : false;
+                              //  boolean disabilityStatus = dataModel.getDisabilityDiscount().equalsIgnoreCase("0") ? true : false;
 
 
                                 // FIXME: 16-08-2022
@@ -935,155 +886,6 @@ public class ActivityMainCashierProperty extends AppCompatActivity implements Vi
                             LogUtils.showErrorLog("reqNormalLogin", ex.getMessage());
                             ex.printStackTrace();
                             Toast.makeText(ActivityMainCashierProperty.this, "Property not found.", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                }
-
-
-            }
-
-
-            @Override
-            public void onErrorListener(String errorMessage) {
-                try {
-                    if (progressDialog != null) {
-                        if (progressDialog.isShowing()) {
-                            progressDialog.dismiss();
-                        }
-                    }
-
-                    LogUtils.showErrorLog("reqNormalLogin", errorMessage);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-
-            }
-        }).request();
-
-    }
-
-    private void reqBusinessSearch(String business_id, String select_option) {
-
-        String option = "";
-
-        if (select_option.equalsIgnoreCase("Registration Fees"))
-            option = "registration";
-        else option = "license";
-
-        progressDialog = new ProgressDialog(mContext);
-
-        HashMap<String, String> headers = new HashMap<>();
-        headers.put("Accept", "application/json");
-        headers.put("Authorization", PrefUtil.getAuthType(mContext) + " " + PrefUtil.getToken(mContext));
-
-        Map<String, String> req_params = new HashMap<>();
-        //  req_params.put(REQUEST_KEY_OPEN_LOCATION_CODE, getUserInputNoticeId());
-        req_params.put("business_id", business_id);
-        req_params.put("select_option", option);
-
-        LogUtils.showErrorLog("header", headers.toString());
-        LogUtils.showErrorLog("header", req_params.toString());
-
-        Log.d("ApiCallResponse", "\nurl " + URL_BUSINESS_SEARCH);
-        Log.d("ApiCallResponse", "\nheaders " + headers);
-        Log.d("ApiCallResponse", "\nbody " + req_params);
-
-        String finalOption = option;
-        new RestApiRequestListener(this, URL_BUSINESS_SEARCH, URL_BUSINESS_SEARCH,
-                headers, req_params, new RestApiRequestListener.setOnRequestListener() {
-
-
-            @Override
-            public void onPreExecute() {
-                progressDialog.setMessage("Searching...");
-                progressDialog.setCancelable(false);
-                progressDialog.show();
-            }
-
-            @Override
-            public void onSuccessListener(String response) {
-
-                /////// SEARCH RESPONSE
-
-
-                if (progressDialog != null) {
-                    if (progressDialog.isShowing()) {
-                        progressDialog.dismiss();
-
-                        try {
-
-                            JSONObject mJsonResponse = new JSONObject(response);
-
-                            if (mJsonResponse.getBoolean("success")) {
-
-                                String businessId = mJsonResponse.getString("business_id");
-
-                                if (finalOption.equalsIgnoreCase("registration")) {
-
-                                    if (!mJsonResponse.isNull("registration_details")) {
-                                        JSONObject obj = mJsonResponse.getJSONObject("registration_details");
-                                        String BusinessType = obj.getString("BusinessType");
-                                        String BusinessCategory = obj.getString("BusinessCategory");
-                                        String RegistrationFee = obj.getString("RegistrationFee");
-                                        String PaymentStatus = obj.getString("PaymentStatus");
-
-                                        Intent intent = new Intent(ActivityMainCashierProperty.this, BusinessPaymentFormActivity.class);
-                                        intent.putExtra("option",select_option);
-                                        intent.putExtra("businessId",businessId);
-                                        intent.putExtra("BusinessType",BusinessType);
-                                        intent.putExtra("BusinessCategory",BusinessCategory);
-                                        intent.putExtra("RegistrationFee",RegistrationFee);
-                                        intent.putExtra("PaymentStatus",PaymentStatus);
-                                        intent.putExtra("method",finalOption);
-                                        startActivity(intent);
-
-
-                                    } else
-                                        Toast.makeText(mContext, "registration_details is null", Toast.LENGTH_SHORT).show();
-
-                                }
-                                else if (finalOption.equalsIgnoreCase("license")) {
-
-                                    if (!mJsonResponse.isNull("license_details")) {
-                                        JSONObject obj = mJsonResponse.getJSONObject("license_details");
-                                        String BusinessType = obj.getString("BusinessType");
-                                        String BusinessCategory = obj.getString("BusinessCategory");
-                                        String BusinessCategoryID = obj.getString("BusinessCategoryID");
-                                        String LicenseFee = obj.getString("LicenseFee");
-                                        String PaymentStatus = obj.getString("PaymentStatus");
-                                        String plenty = obj.getString("plenty");
-
-
-                                        Intent intent = new Intent(ActivityMainCashierProperty.this, BusinessPaymentFormActivity.class);
-                                        intent.putExtra("option",select_option);
-                                        intent.putExtra("businessId",businessId);
-                                        intent.putExtra("BusinessType",BusinessType);
-                                        intent.putExtra("BusinessCategory",BusinessCategory);
-                                        intent.putExtra("RegistrationFee",LicenseFee);
-                                        intent.putExtra("PaymentStatus",PaymentStatus);
-                                        intent.putExtra("method",finalOption);
-                                        intent.putExtra("plenty",plenty);
-                                        startActivity(intent);
-
-
-                                    } else
-                                        Toast.makeText(mContext, "license_details is null", Toast.LENGTH_SHORT).show();
-
-                                }
-
-
-                            } else {
-                                Toast.makeText(ActivityMainCashierProperty.this, mJsonResponse.getString("errors"), Toast.LENGTH_LONG).show();
-                            }
-
-                            Log.d("onSuccessListener", "onSuccessListener: AkashToday" + mJsonResponse.toString());
-
-
-                        } catch (Exception ex) {
-                            LogUtils.showErrorLog("reqNormalLogin", ex.getMessage());
-                            ex.printStackTrace();
-                            Toast.makeText(ActivityMainCashierProperty.this, ex.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
                 }

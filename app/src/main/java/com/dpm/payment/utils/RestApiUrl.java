@@ -17,7 +17,6 @@ public interface RestApiUrl {
 
     String URL_CASHIER_LOGIN = BASE_URL + "/admin/login";
     String URL_CASHIER_SEARCH_PROPERTY= BASE_URL + "/admin/search-property";
-    String URL_BUSINESS_SEARCH= BASE_URL + "/search-business";
     String URL_CASHIER_SAVE_PAYMENT= BASE_URL + "/admin/payment/";
     String URL_CASHIER_LANDLORD_EDIT_PROFILE= BASE_URL + "/admin/landlord/";
 

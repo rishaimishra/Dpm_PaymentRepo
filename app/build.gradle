@@ -1,9 +1,8 @@
 apply plugin: 'com.android.application'
-apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
     compileSdkVersion 30
- /*   buildToolsVersion "30.0.0"*/
+    buildToolsVersion "30.0.0"
 
     defaultConfig {
         applicationId "com.dpm.payment"
@@ -40,45 +39,88 @@ android {
     }
 
     buildTypes {
-        release {
-            minifyEnabled false
-            applicationVariants.all { variant ->
-                variant.outputs.each { output ->
-                    project.ext { appName = rootProject.name }
-                    def formattedDate = new Date().format('E,dd-MMM-yyyy')
-                    def newName = "$appName-release"
-                    variant.outputs.all {
-                        def name = "${newName}-${variant.versionName}_" + formattedDate + ".apk"
-                        output.outputFileName = name
+        development {
+
+
+            release {
+                minifyEnabled false
+
+                applicationVariants.all { variant ->
+                    variant.outputs.each { output ->
+                        project.ext { appName = 'Sigma_Payments' }
+                        def formattedDate = new Date().format('E,dd-MMM-yyyy')
+                        def newName = output.outputFile.name
+                        newName = newName.replace("app-", "$project.ext.appName-") //"MyAppName" -> I set my app variables in the root project
+                        newName = newName.replace("-release", "-release" + formattedDate)
+                        variant.outputs.all {
+                            String appname=getProject().getName()
+                            outputFileName = "${appName}-${variant.versionName}${appname}+.apk"
+                        }
                     }
                 }
             }
-        }
-        debug {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            applicationVariants.all { variant ->
-                variant.outputs.each { output ->
-                    project.ext { appName = rootProject.name }
-                    def formattedDate = new Date().format('E,dd-MMM-yyyy')
-                    def newName = "$appName-debug"
-                    variant.outputs.all {
-                        def name = "${newName}-${variant.versionName}_" + formattedDate + ".apk"
-                        output.outputFileName = name
+            debug {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                applicationVariants.all { variant ->
+                    variant.outputs.each { output ->
+                        project.ext { appName = 'Sigma_Payments' }
+                        def formattedDate = new Date().format('E,dd-MMM-yyyy')
+                        def newName = output.outputFile.name
+                        newName = newName.replace("app-", "$project.ext.appName-") //"MyAppName" -> I set my app variables in the root project
+                        newName = newName.replace("-debug", "-debug" + formattedDate)
+                        variant.outputs.all {
+                            //outputFileName = "${variant.name}-${variant.versionName}ederdriver_"+formattedDate+".apk"
+                            String appname=getProject().getName()
+                            outputFileName = "${appName}-${variant.versionName}_"+formattedDate-${appname}+".apk"
+                        }
                     }
                 }
             }
+
+
+            buildConfigField "boolean", "LOG_STAT", "true"
+            signingConfig signingConfigs.development
+            minifyEnabled false
+            debuggable true
+            buildConfigField "String", "BASE_URL", "\"https://dpm.sigmaventuressl.com/apiv2\""
+            buildConfigField "String", "BASE_URL_MAIN", "\"https://dpm.sigmaventuressl.com\""
+            buildConfigField "String", "BASE_URL_TERMS", "\"https:l\""
+
+
         }
 
+        qa {
+            buildConfigField "boolean", "LOG_STAT", "true"
+            debuggable true
+            minifyEnabled false
+            buildConfigField "boolean", "CRASHLATICS_SEND", "false"
+            buildConfigField "String", "BASE_URL", "\"https://dpm.sigmaventuressl.com/apiv2\""
+            buildConfigField "String", "BASE_URL_MAIN", "\"https://dpm.sigmaventuressl.com\""
+            buildConfigField "String", "BASE_URL_TERMS", "\"https:l\""
+
+        }
+
+        release {
+
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+            buildConfigField "boolean", "LOG_STAT", "true"
+            buildConfigField "boolean", "CRASHLATICS_SEND", "true"
+            buildConfigField "String", "BASE_URL", "\"https://dpm.sigmaventuressl.com/apiv2\""
+            buildConfigField "String", "BASE_URL_MAIN", "\"https://dpm.sigmaventuressl.com\""
+            buildConfigField "String", "BASE_URL_TERMS", "\"https:l\""
+
+
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    viewBinding {
-        enabled = true
-    }
 }
 
 dependencies {

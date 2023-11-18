@@ -262,7 +262,7 @@ public class ApiRequest {
 
             } catch (JSONException e) {
                 e.printStackTrace();
-                listner.OnCallBackError(call.request().header("tag"),response.message(), -1);
+                // ToastUtils.showLong((Activity) context, context.getString(R.string.Somethingwrong), true);
 
             }
 
